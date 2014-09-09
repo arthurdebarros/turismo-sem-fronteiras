@@ -1,5 +1,7 @@
 package models;
 
+import exceptions.EstadoException;
+
 
 public class EstadoParticipacaoAberta implements EstadoDeParticipacao {
 

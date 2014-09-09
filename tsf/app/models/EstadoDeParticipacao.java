@@ -1,5 +1,7 @@
 package models;
 
+import exceptions.EstadoException;
+
 
 public interface EstadoDeParticipacao {
 	

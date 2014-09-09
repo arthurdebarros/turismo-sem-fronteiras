@@ -1,4 +1,4 @@
-package models;
+package exceptions;
 
 public class EstadoException extends Exception {
 	

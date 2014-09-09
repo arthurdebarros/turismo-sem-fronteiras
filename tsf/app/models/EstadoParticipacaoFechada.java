@@ -1,5 +1,7 @@
 package models;
 
+import exceptions.EstadoException;
+
 public class EstadoParticipacaoFechada implements EstadoDeParticipacao{
 
 	private String senha;
