@@ -947,7 +947,7 @@ img {
   width: 100% \9;
   max-width: 100%;
   height: auto;
-  padding: 4px;
+  padding: 3px;
   line-height: 1.42857143;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -957,7 +957,8 @@ img {
           transition: all .2s ease-in-out;
 }
 .img-circle {
-  border-radius: 50%;
+  box-shadow: 20px 20px 20px #708090;
+  border-radius: 100%;
 }
 hr {
   margin-top: 20px;
@@ -1737,8 +1738,22 @@ pre code {
   .col-sm-offset-1 {
     margin-left: 8.33333333%;
   }
-  .col-sm-offset-0 {
-    margin-left: 0;
+  .col-sm-offseteu {
+    box-shadow: 20px 20px 20px #708090;
+    background-color: #4682B4;
+    border-radius: 5px;
+    margin-left: 33.33333333%;
+  }
+  .col-sm-offsetop {
+    text-shadow: 10px 10px 10px #708090;
+    margin-top: 5%;
+    margin-left: 33.33333333%;
+  }
+  .col-sm-offsetudo{
+    margin-left: -4%;
+    margin-top: -7%;
+    
+
   }
 }
 @media (min-width: 992px) {
@@ -2811,7 +2826,9 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #fff;
-  background-color: #428bca;
+  width: 83px;
+  height: 34px;
+  background-color: #3333CC;
   border-color: #357ebd;
 }
 .btn-primary:hover,
@@ -2974,6 +2991,8 @@ fieldset[disabled] .btn-warning.active {
   background-color: #fff;
 }
 .btn-danger {
+  margin-top: -40px;
+  float:right;
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;

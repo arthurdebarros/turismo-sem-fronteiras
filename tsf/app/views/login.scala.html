@@ -1,8 +1,15 @@
 @(form: Form[Usuario])
+<html>
+<body style=" background-color: #ADD8E6">
 
 @main("Login Page") {
 
-   <div class="col-sm-4 col-sm-offset-4">
+ 
+  <div class="col-sm-4 col-sm-offsetop">
+    <h1> Turismo sem Fronteiras         </h1>
+    
+  </div>
+   <div class="col-sm-4 col-sm-offseteu">
    @if(flash.contains("fail")) {
    		<p class="bg-danger" style="">
         	@flash.get("fail")
@@ -10,8 +17,8 @@
    }
    
    @helper.form(routes.Login.authenticate) {
-	   <h1 class="text-center">LogIn</h1>
-       <p>
+	   <h2 class="text-center">Login</h2>
+	    <p>
 	       <input type="email" name="email" placeholder="Email" value='@form("email").value'
                   class="form-control">
        </p>
@@ -19,9 +26,17 @@
 	       <input type="password" name="pass" placeholder="Password" class="form-control">
        </p>
        <div>
-	       <button class="btn btn-primary" type="submit">Login</button>
-	       <a class="btn btn-info" style="float:right;" href="/registrar"> Registrar</a>
+	       <a class="btn btn-info"  href="/registrar"> Registrar</a>
+	       <button class="btn btn-primary" style="float:right;" type="submit">Login</button>
        </div>
 	}
     </div>
+   
+    <div class="col-sm-4 col-sm-offsetudo">
+     <img src="/assets/images/Sem.jpg"alt="Fuzzy Cardigan"
+      class="img-thumbnail img-circle ">
+    </div>
+
 }
+</body>
+</html>

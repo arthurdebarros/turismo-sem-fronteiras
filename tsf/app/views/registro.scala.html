@@ -1,17 +1,23 @@
 @(form: Form[Usuario])
+<html>
+<body style=" background-color: #ADD8E6">
 
 @main("Register Page") {
-
-   <div class="col-sm-4 col-sm-offset-4">
+  <div class="col-sm-4 col-sm-offsetop">
+    <h1> Turismo sem Fronteiras         </h1>
+    
+  </div>
+  <div class ="col-sm-4 col-sm-offseteu" style ="padding: 0px 20px;">
    @if(flash.contains("fail")) {
    		<p class="bg-danger" style="">
         	@flash.get("fail")
 		</p>
    }
-
+  
    @helper.form(routes.Registro.registrar) {
-	   <h1 class="text-center">Registrar</h1>
+	   <h2 class="text-center">Registrar</h2>
 	
+	  
 	   <p>
 	       <input type="text" name="nome" placeholder="Nome" value='@form("nome").value'
                 class="form-control">
@@ -24,9 +30,16 @@
 	       <input type="password" name="pass" placeholder="Password" class="form-control">
 	   </p>
 	   <div>
-	       <button class="btn btn-primary"  type="submit">Registrar</button>
-	       <a class="btn btn-info" style="float:right;" href="/login"> Login</a>
+	       
+	       <a class="btn btn-primary"  href="/login"> Voltar</a>
+	       <button class="btn btn-info" style="float:right;"  type="submit">Registrar</button>
 	   </div>
 	}
     </div>
+    <div class="col-sm-4 col-sm-offsetudo">
+     <img src="/assets/images/Sem.jpg"alt="Fuzzy Cardigan"
+      class="img-thumbnail img-circle ">
+    </div>
 }
+</body>
+</html>
