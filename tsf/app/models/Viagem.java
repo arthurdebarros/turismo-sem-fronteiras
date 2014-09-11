@@ -10,8 +10,8 @@ public class Viagem {
 	Date datadeida;
 	Date datadevolta;
 	EstadoDeParticipacao estado;
-	LinkedList<Participante> participantes;
 	Usuario dono;
+	LinkedList<Usuario> participantes;
 	
 	protected void mudarEstado(EstadoDeParticipacao novoestado){
 		this.estado = novoestado;
@@ -22,13 +22,13 @@ public class Viagem {
 	}
 	
 	
-	
-	public Viagem(String descricao,String local,Date datadeida,Date datadevolta, EstadoDeParticipacao estadoInicial){
-		this.participantes = new LinkedList<Participante>();
+	public Viagem(String descricao,String local,Date datadeida,Date datadevolta, EstadoDeParticipacao estadoInicial, Usuario dono){
+		this.participantes = new LinkedList<Usuario>();
 		this.descricao = descricao;
 		this.local = local;
 		this.datadeida = datadeida;
 		this.datadevolta = datadevolta;
+		this.dono = dono;
 		mudarEstado(estadoInicial); 
 	}
 }

@@ -14,7 +14,7 @@ public class ViagemTest {
 	@Test
 	public void testDeMudarComportamentoDeParticipacao() {
 		Participante p = new Participante("Arthur","arthurdebarros@gmail.com");
-		EstadoDeParticipacao comportamento1 = new EstadoParticipacaoAberta();
+		EstadoDeParticipacao comportamento1 = new EstadoParticipacaoSimples();
 		Viagem v = new Viagem("ida a praia", "boa viagem", new Date(), new Date(), comportamento1);
 		Application controller = new Application();
 		controller.criarParticipacao(v, p);

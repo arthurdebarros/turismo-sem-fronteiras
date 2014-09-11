@@ -10,8 +10,8 @@ public class EstadoParticipacaoFechada implements EstadoDeParticipacao{
 	}
 	
 	@Override
-	public void adicionarParticipante(Viagem viagem, Participante participante) {
-		// TODO Auto-generated method stub
+	public void adicionarParticipante(Viagem viagem, Usuario participante) {
+		
 		
 	}
 
@@ -23,7 +23,15 @@ public class EstadoParticipacaoFechada implements EstadoDeParticipacao{
 
 	@Override
 	public void tornarAberto(Viagem viagem) {
-		viagem.mudarEstado(new EstadoParticipacaoAberta());
+		viagem.mudarEstado(new EstadoParticipacaoSimples());
+		
+	}
+	
+	@Override
+	public void removerParticipante(Viagem viagem, Usuario p) throws EstadoException {
+		if(!viagem.participantes.remove(p)){
+			throw new EstadoException("Participante já existe");
+		}
 		
 	}
 
