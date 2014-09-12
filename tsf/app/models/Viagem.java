@@ -24,14 +24,14 @@ public class Viagem {
 	long id;
 	
 	@ManyToOne
-	Usuario dono;
+	public Usuario dono;
 	
 	@ManyToMany
 	@JoinTable(
 	      name="Usuario_Viagem",
 	      joinColumns={@JoinColumn(name="Viagem_ID", referencedColumnName="ID")},
 	      inverseJoinColumns={@JoinColumn(name="Usuario_ID", referencedColumnName="ID")})
-	List<Usuario> participacoes = new LinkedList<Usuario>();
+	public List<Usuario> participacoes = new LinkedList<Usuario>();
 	
 	String descricao;
 	String local;

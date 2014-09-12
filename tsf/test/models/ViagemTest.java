@@ -1,17 +1,26 @@
 package models;
-
+import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.Assert.*;
 
 import java.util.Date;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import controllers.Application;
 import exceptions.EstadoException;
+import models.Usuario;
+import models.Viagem;
+import models.dao.GenericDAO;
+import models.dao.GenericDAOImpl;
+import base.AbstractTest;
+import play.mvc.Controller;
+import play.mvc.Result;
+import play.data.Form;
+import play.db.jpa.Transactional;
 
-public class ViagemTest {
+public class ViagemTest extends AbstractTest {
 
+	GenericDAO dao = new GenericDAOImpl();
+	
 	@Test
 	public void testDeveCriarViagemComEstadoDeParticipacao() {
 		Usuario Dono = new Usuario("Fulano","fulanodetal@gmail.com","12345");
@@ -41,6 +50,19 @@ public class ViagemTest {
 		assertTrue(v.participacoes.contains(participante));
 		v.getEstado().removerParticipante(v, participante);
 		assertTrue(!v.participacoes.contains(participante));
+	}
+	
+	@Test
+	@Transactional
+	public void deveSalvareEncontrarViagemNoBD() {
+		Usuario dono = new Usuario("Fulano","fulanodetal@gmail.com","12345");
+		Estado estado = new Estado();
+		Viagem v = new Viagem("ida a praia", "boa viagem", new Date(), new Date(), estado, dono);
+		dao.persist(dono);
+		dao.persist(estado);
+		dao.persist(v);
+		dao.flush();
+		assertThat(dao.findByAttributeName("Viagem", "descricao", "ida a praia").size() > 0);
 	}
 
 }
