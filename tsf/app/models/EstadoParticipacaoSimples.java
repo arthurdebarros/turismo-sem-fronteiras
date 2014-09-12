@@ -7,7 +7,7 @@ public class EstadoParticipacaoSimples implements EstadoDeParticipacao {
 
 	@Override
 	public void adicionarParticipante(Viagem viagem, Usuario p) {
-		viagem.participantes.add(p);
+		viagem.participacoes.add(p);
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class EstadoParticipacaoSimples implements EstadoDeParticipacao {
 
 	@Override
 	public void removerParticipante(Viagem viagem, Usuario p) throws EstadoException {
-		if(!viagem.participantes.remove(p)){
+		if(!viagem.participacoes.remove(p)){
 			throw new EstadoException("Participante já existe");
 		}
 		

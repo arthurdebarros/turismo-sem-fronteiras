@@ -1,10 +1,12 @@
 package models;
 
+import javax.persistence.Entity;
+
 import exceptions.EstadoException;
 
 
 public interface EstadoDeParticipacao {
-	
+
 	public void adicionarParticipante(Viagem viagem, Usuario participante) throws EstadoException;
 	
 	public void removerParticipante(Viagem viagem, Usuario participante) throws EstadoException;

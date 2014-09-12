@@ -1,22 +1,33 @@
 package models;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
-@Entity(name="Usuario")
+import javax.persistence.OneToMany;
+
+@Entity(name="USUARIO")
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
+	@Column(name = "ID")
+	private long id;
 	
 	private String email;
 	private String pass;
 	private String nome;
 	
+	@ManyToMany(mappedBy="participacoes")
+	List<Viagem> viagens= new LinkedList<Viagem>();
+	
+	//@OneToMany(mappedBy = "dono")
+	//List<Viagem> viagenscriadas;
 	public Usuario() {
 	}
 	
@@ -24,6 +35,8 @@ public class Usuario {
 		this.email = email;
 		this.nome = nome;
 		this.pass = pass;
+	//	this.viagenscriadas = new LinkedList<Viagem>();
+	//	this.viagens = new LinkedList<Viagem>();
 	}
 
 	public String getEmail() {

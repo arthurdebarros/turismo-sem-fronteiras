@@ -1,0 +1,10 @@
+@(viagens: List[Viagem])
+
+@main("Home Page") {
+	<ul>
+   @for(viagem <- viagens){
+		<li>viagem.getDescricao()</li>   
+   }
+	</ul>
+	
+}
