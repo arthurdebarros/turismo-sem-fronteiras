@@ -1,11 +1,18 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import exceptions.EstadoException;
-
-public class EstadoParticipacaoFechada implements EstadoDeParticipacao{
-
+//@Entity
+public class EstadoFechado extends Estado{
+	//@Id
+	//@GeneratedValue
+	//long id;
+	
 	private String senha;
-	public EstadoParticipacaoFechada(String senha){
+	public EstadoFechado(String senha){
 		this.senha = senha;
 	}
 	
@@ -23,13 +30,13 @@ public class EstadoParticipacaoFechada implements EstadoDeParticipacao{
 
 	@Override
 	public void tornarAberto(Viagem viagem) {
-		viagem.mudarEstado(new EstadoParticipacaoSimples());
+		viagem.mudarEstado(new Estado());
 		
 	}
 	
 	@Override
 	public void removerParticipante(Viagem viagem, Usuario p) throws EstadoException {
-		if(!viagem.participantes.remove(p)){
+		if(!viagem.participacoes.remove(p)){
 			throw new EstadoException("Participante já existe");
 		}
 		
