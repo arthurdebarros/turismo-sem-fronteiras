@@ -1,26 +1,32 @@
 @(message: String)
 <html>
 <body style=" background-color: #ADD8E6">
-
+@main("Home Page") {
 
   <div class="col-sm-4 col-sm-offsetop">
     <h1> Turismo sem Fronteiras         </h1>
     
   </div>
-@main("Home Page") {
+
 
   <div class="col-sm-4 col-sm-offseteu">
     <legend>
     	<h3 class="text-center"> Bem Vindo(a)! @session.get("user") </h3>
-      <a href="/logout" class="btn btn-danger"> LogOut</a>
     </legend>
+    <a href="/novaviagem" class="btn btn-success"> Criar viagem</a>
+    <br>
+    <a href="/logout" class="btn btn-success"> LogOut</a>
+    <br>
+    
         
   </div>
   <div class="col-sm-4 col-sm-offsetudo" style = "">
      <img src="/assets/images/Sem.jpg"alt="Fuzzy Cardigan"
       class="img-thumbnail img-circle ">
   </div>
+  
 	
 }
 </body>
+
 </html>

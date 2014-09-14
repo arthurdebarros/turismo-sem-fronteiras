@@ -48,6 +48,7 @@ public class Login extends Controller {
         			"Usuario", "email", u.getEmail()).get(0);
             session().clear();
             session("user", user.getNome());
+            session("email", user.getEmail());
             return redirect(
                 routes.Application.index()
             );

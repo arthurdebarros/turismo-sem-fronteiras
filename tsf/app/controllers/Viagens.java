@@ -13,7 +13,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.data.Form;
 import play.db.jpa.Transactional;
-import views.html.login;
+import views.html.criacao;
 
 public class Viagens extends Controller {
 	private static GenericDAO dao = new GenericDAOImpl();
@@ -25,22 +25,27 @@ public class Viagens extends Controller {
 		List<Usuario> result = dao.findByAttributeName("Usuario", "email", email);
 		return result.size() == 0 ? null : result.get(0);
 	}
+    @Transactional
+    public static Result getCadastroDeViagem(){
+    	dao.persist(new Estado());
+    	return ok(criacao.render(getUser(session().get("email"))));
+    }
     
     @Transactional
 	public static Result CriarViagem()  {
 		Form<Viagem> viagemFormRequest = VIAGEM_FORM.bindFromRequest();
+		System.out.println(viagemFormRequest.toString());
 		if (VIAGEM_FORM.hasErrors()) {
 			return badRequest();
 		} 
 		else {
-			Viagem novaViagem = viagemFormRequest.get();
-			
-			Long idEstado = Long.parseLong(form().bindFromRequest().get("estado"));
-			Estado estadoinicial = dao.findByEntityId(Estado.class, idEstado);
-			novaViagem.dono = getUser(session().get("user"));
-			novaViagem.mudarEstado(estadoinicial);
-			dao.persist(novaViagem);
-			dao.flush();
+//			Viagem novaViagem = viagemFormRequest.get();
+//			Long idEstado = Long.parseLong(form().bindFromRequest().get("estado"));
+//			Estado estadoinicial = dao.findByEntityId(Estado.class, idEstado);
+//			novaViagem.dono = getUser(session().get("user"));
+//			novaViagem.mudarEstado(estadoinicial);
+//			dao.persist(novaViagem);
+//			dao.flush();
 			return redirect(controllers.routes.Application.index());
 		}
 	}

@@ -33,16 +33,12 @@ public class Viagem {
 	      inverseJoinColumns={@JoinColumn(name="Usuario_ID", referencedColumnName="ID")})
 	public List<Usuario> participacoes = new LinkedList<Usuario>();
 	
+	@OneToOne
+	Estado estadoDaViagem = new Estado();
 	String descricao;
 	String local;
 	Date datadeida;
 	Date datadevolta;
-	
-	@OneToOne
-	Estado estadoDaViagem = new Estado();
-	
-	
-	
 	
 	public void mudarEstado(Estado novoestado){
 		this.estadoDaViagem = novoestado;
@@ -52,9 +48,12 @@ public class Viagem {
 		return estadoDaViagem;
 	}
 	
+	public Viagem(){
+		
+	}
 	
 	public Viagem(String descricao,String local,Date datadeida,Date datadevolta, Estado estadoInicial, Usuario dono){
-		mudarEstado(estadoInicial);
+		this.estadoDaViagem = estadoInicial;
 		this.descricao = descricao;
 		this.local = local;
 		this.datadeida = datadeida;
