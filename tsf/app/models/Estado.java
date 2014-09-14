@@ -14,6 +14,10 @@ public class Estado {
 	@GeneratedValue
 	long id;
 	
+	public String descricao = "Estado Aberto";
+	public long getId(){
+		return id;
+	}
 	public void adicionarParticipante(Viagem viagem, Usuario p) {
 		viagem.participacoes.add(p);
 	}

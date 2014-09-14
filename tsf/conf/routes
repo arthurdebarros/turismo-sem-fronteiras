@@ -15,4 +15,6 @@ GET     /registrar                       controllers.Registro.show()
 POST    /registrar                       controllers.Registro.registrar()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file                   controllers.Assets.at(path="/public", file)
+# Viagens
+POST 	/viagens					    controllers.Viagens.CriarViagem()

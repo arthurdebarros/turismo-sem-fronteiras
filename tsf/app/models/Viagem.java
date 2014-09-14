@@ -44,7 +44,7 @@ public class Viagem {
 	
 	
 	
-	protected void mudarEstado(Estado novoestado){
+	public void mudarEstado(Estado novoestado){
 		this.estadoDaViagem = novoestado;
 	}
 	
@@ -54,7 +54,7 @@ public class Viagem {
 	
 	
 	public Viagem(String descricao,String local,Date datadeida,Date datadevolta, Estado estadoInicial, Usuario dono){
-		this.estadoDaViagem = estadoInicial;
+		mudarEstado(estadoInicial);
 		this.descricao = descricao;
 		this.local = local;
 		this.datadeida = datadeida;
