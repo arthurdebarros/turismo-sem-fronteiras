@@ -49,10 +49,9 @@
 												
 												<label for="exampleInputEmail1">Tipo de Viagem</label>
 												
-												<select name="estrategia" class="form-control">
-													@for(estrategia <- controllers.Viagens.getStrategiasDeViagens()){
-									    				<option value="@estrategia.getId()" >@estrategia.descricao</option>
-									    			}
+												<select name="estado" class="form-control">
+									    				<option value="ABERTA" >Viagem Aberta</option>
+														<option value="FECHADA" >Viagem Fechada. Digita a senha</option>
 												</select>
 												<input name="dono" type="text" value="@user.getEmail()" style="visibility:hidden;">
 											</div>

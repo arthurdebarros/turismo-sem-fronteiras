@@ -2,9 +2,9 @@ package controllers;
 
 import static play.data.Form.form;
 
+import java.util.Date;
 import java.util.List;
 
-import models.Estado;
 import models.Usuario;
 import models.Viagem;
 import models.dao.GenericDAO;
@@ -27,7 +27,6 @@ public class Viagens extends Controller {
 	}
     @Transactional
     public static Result getCadastroDeViagem(){
-    	dao.persist(new Estado());
     	return ok(criacao.render(getUser(session().get("email"))));
     }
     
@@ -39,19 +38,40 @@ public class Viagens extends Controller {
 			return badRequest();
 		} 
 		else {
-//			Viagem novaViagem = viagemFormRequest.get();
-//			Long idEstado = Long.parseLong(form().bindFromRequest().get("estado"));
-//			Estado estadoinicial = dao.findByEntityId(Estado.class, idEstado);
-//			novaViagem.dono = getUser(session().get("user"));
-//			novaViagem.mudarEstado(estadoinicial);
-//			dao.persist(novaViagem);
-//			dao.flush();
+			Viagem novaViagem = new Viagem();
+			novaViagem.local =  form().bindFromRequest().get("local");
+			novaViagem.descricao = form().bindFromRequest().get("descricao");
+			novaViagem.dono = getUser(session().get("email"));
+			novaViagem.datadeida = new Date();
+			novaViagem.datadevolta = new Date();
+			novaViagem.estadoDaViagem = form().bindFromRequest().get("estado");
+			dao.persist(novaViagem);
+			System.out.println("persistiu a VIAGEM: "+ novaViagem.descricao);
 			return redirect(controllers.routes.Application.index());
 		}
 	}
 	
-	@Transactional
-	public static List<Estado> getStrategiasDeViagens(){
-		return dao.findAllByClassName("Estado");
+//	public static Result inserirSenhaDaViagem(Viagem v){
+//	    return ok(senhaViagem.render(Viagem.descricao))
+//	}
+	
+	public static void adicionarParticipante(Viagem v, Usuario participante){
+	    v.participacoes.add(participante);
 	}
+	
+	public static void adicionarParticipante(Viagem v, Usuario participante, String senha){
+	    if(v.senha == senha){
+	        adicionarParticipante(v,participante);
+	    }
+	}
+	
+	public static void removerParticipante(Viagem v, Usuario participante){
+	    v.participacoes.remove(participante);
+	}
+	
+	
+//	@Transactional
+//	public static List<Estado> getStrategiasDeViagens(){
+//		return dao.findAllByClassName("Estado");
+//	}
 }
