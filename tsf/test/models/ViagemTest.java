@@ -26,7 +26,7 @@ public class ViagemTest extends AbstractTest {
 		Usuario Dono = new Usuario("Fulano","fulanodetal@gmail.com","12345");
 		String estado = "ABERTO";
 		Viagem v = new Viagem("ida a praia", "boa viagem", new Date(), new Date(), estado, Dono);
-		assertEquals(Dono,v.dono);
+		assertEquals(Dono,v.getDono());
 		assertEquals(estado,v.estado);
 	}
 	
@@ -37,7 +37,7 @@ public class ViagemTest extends AbstractTest {
 		Viagem v = new Viagem("ida a praia", "boa viagem", new Date(), new Date(), estado, dono);
 		Usuario participante = new Usuario ("Sicrano","sicrano@a.b.c","23456");
 		Viagens.adicionarParticipante(v, participante);
-		assertTrue(v.participacoes.contains(participante));
+		assertTrue(v.getParticipacoes().contains(participante));
 	}
 	
 	@Test
@@ -47,9 +47,9 @@ public class ViagemTest extends AbstractTest {
 		Viagem v = new Viagem("ida a praia", "boa viagem", new Date(), new Date(), estado, dono);
 		Usuario participante = new Usuario ("Sicrano","sicrano@a.b.c","23456");
 		Viagens.adicionarParticipante(v, participante);
-		assertTrue(v.participacoes.contains(participante));
+		assertTrue(v.getParticipacoes().contains(participante));
 		Viagens.removerParticipante(v, participante);
-		assertTrue(!v.participacoes.contains(participante));
+		assertTrue(!v.getParticipacoes().contains(participante));
 	}
 	
 	@Test

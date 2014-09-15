@@ -43,23 +43,23 @@ public class Viagens extends Controller {
 		else {
 			Viagem novaViagem = new Viagem();
 			try{
-				novaViagem.datadeida = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH).parse(form().bindFromRequest().get("datadeida"));
-				novaViagem.datadevolta = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH).parse(form().bindFromRequest().get("datadevolta"));
+				novaViagem.setDatadeida(new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH).parse(form().bindFromRequest().get("datadeida")));
+				novaViagem.setDatadevolta(new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH).parse(form().bindFromRequest().get("datadevolta")));
 			}catch(ParseException e){
-				novaViagem.datadeida = new Date();
-				novaViagem.datadevolta = new Date();
+				novaViagem.setDatadeida(new Date());
+				novaViagem.setDatadevolta(new Date());
 			}	
-			novaViagem.local =  form().bindFromRequest().get("local");
-			novaViagem.senha = null;
-			novaViagem.senha = form().bindFromRequest().get("senha");
-			novaViagem.descricao = form().bindFromRequest().get("descricao");
+			novaViagem.setLocal(form().bindFromRequest().get("local"));
+			novaViagem.setSenha(null);
+			novaViagem.setSenha(form().bindFromRequest().get("senha"));
+			novaViagem.setDescricao(form().bindFromRequest().get("descricao"));
 			Usuario dono =  getUser(session().get("email"));
-			novaViagem.estadoDaViagem = form().bindFromRequest().get("estado");
-			novaViagem.dono = dono;
-			novaViagem.dono.viagensCriadas.add(novaViagem);
-			dao.merge(novaViagem);
+			novaViagem.setEstadoDaViagem(form().bindFromRequest().get("estado"));
+			novaViagem.setDono(dono);
+			novaViagem.getDono().getViagensCriadas().add(novaViagem);
+			//dao.merge(novaViagem);
 			dao.persist(novaViagem);
-			System.out.println("persistiu a VIAGEM: "+ novaViagem.descricao);
+			System.out.println("persistiu a VIAGEM: "+ novaViagem.getDescricao());
 			flash("fail","Viagem salva com sucesso");
 			return redirect(controllers.routes.Application.index());
 		}
@@ -70,17 +70,17 @@ public class Viagens extends Controller {
 //	}
 	
 	public static void adicionarParticipante(Viagem v, Usuario participante){
-	    v.participacoes.add(participante);
+	    v.getParticipacoes().add(participante);
 	}
 	
 	public static void adicionarParticipante(Viagem v, Usuario participante, String senha){
-	    if(v.senha == senha){
+	    if(v.getSenha() == senha){
 	        adicionarParticipante(v,participante);
 	    }
 	}
 	
 	public static void removerParticipante(Viagem v, Usuario participante){
-	    v.participacoes.remove(participante);
+	    v.getParticipacoes().remove(participante);
 	}
 	
 	

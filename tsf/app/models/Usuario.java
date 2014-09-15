@@ -21,10 +21,10 @@ public class Usuario {
 	
 
 	@ManyToMany(mappedBy = "participacoes")
-	public List<Viagem> viagens = new LinkedList<Viagem>();
+	private List<Viagem> viagens = new LinkedList<Viagem>();
 	
 	@OneToMany
-	public List<Viagem> viagensCriadas = new LinkedList<Viagem>();
+	private List<Viagem> viagensCriadas = new LinkedList<Viagem>();
 	
 	private String email;
 	private String pass;
@@ -61,5 +61,29 @@ public class Usuario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<Viagem> getViagens() {
+		return viagens;
+	}
+
+	public void setViagens(List<Viagem> viagens) {
+		this.viagens = viagens;
+	}
+
+	public List<Viagem> getViagensCriadas() {
+		return viagensCriadas;
+	}
+
+	public void setViagensCriadas(List<Viagem> viagensCriadas) {
+		this.viagensCriadas = viagensCriadas;
 	}
 }
