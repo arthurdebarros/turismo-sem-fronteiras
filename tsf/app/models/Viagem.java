@@ -32,7 +32,7 @@ public class Viagem {
 	      joinColumns={@JoinColumn(name="Viagem_ID", referencedColumnName="ID")},
 	      inverseJoinColumns={@JoinColumn(name="Usuario_ID", referencedColumnName="ID")})
 	public List<Usuario> participacoes = new LinkedList<Usuario>();
-	
+	public String titulo;
 	public String estadoDaViagem;
 	public String descricao;
 	public String local;

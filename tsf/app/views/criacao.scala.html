@@ -21,12 +21,13 @@
 									<div class="form-group">		
 										<div class=" form-group row">
 											<div class="col-md-8">
-												<input name="titulo" type="text" class="form-control" placeholder="Titulo do evento" maxlength="40">
+												<input name="titulo" type="text" class="form-control" placeholder="Titulo da Viagem" maxlength="40">
 											</div>
 												
 											<div class="col-md-4">
+												Data de ida:
 												<input name="datadeida" type="date" class="form-control"  required>
-												
+												Data de volta:
 												<input name="datadevolta" type="date" class="form-control"  required>
 											</div>
 									  			
@@ -40,7 +41,7 @@
 									  	
 									  	<div class="form-group row">
 									  		<div class="col-md-12">
-									  			<textarea name="local" placeholder="Local da Viagem" class="form-control" rows="6" maxlength="450"></textarea>
+									  			<textarea name="local" placeholder="Local(s) da Viagem" class="form-control" rows="6" maxlength="450"></textarea>
 									  		</div>
 									  	</div>
 									
@@ -48,12 +49,12 @@
 											<div class="col-md-12">
 												
 												<label for="exampleInputEmail1">Tipo de Viagem</label>
-												
 												<select name="estado" class="form-control">
 									    				<option value="ABERTA" >Viagem Aberta</option>
 														<option value="FECHADA" >Viagem Fechada. Digita a senha</option>
 												</select>
-												<input name="dono" type="text" value="@user.getEmail()" style="visibility:hidden;">
+											
+	     										<input name="senha" type="password" placeholder="Senha, caso fechada" class="form-control">
 											</div>
 										</div>
 										

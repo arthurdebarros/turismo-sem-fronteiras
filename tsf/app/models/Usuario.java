@@ -21,10 +21,10 @@ public class Usuario {
 	
 
 	@ManyToMany(mappedBy = "participacoes")
-	List<Viagem> viagens = new LinkedList<Viagem>();
+	public List<Viagem> viagens = new LinkedList<Viagem>();
 	
 	@OneToMany
-	List<Viagem> viagensCriadas = new LinkedList<Viagem>();
+	public List<Viagem> viagensCriadas = new LinkedList<Viagem>();
 	
 	private String email;
 	private String pass;

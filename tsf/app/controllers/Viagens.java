@@ -2,8 +2,11 @@ package controllers;
 
 import static play.data.Form.form;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import models.Usuario;
 import models.Viagem;
@@ -39,14 +42,25 @@ public class Viagens extends Controller {
 		} 
 		else {
 			Viagem novaViagem = new Viagem();
+			try{
+				novaViagem.datadeida = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH).parse(form().bindFromRequest().get("datadeida"));
+				novaViagem.datadevolta = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH).parse(form().bindFromRequest().get("datadevolta"));
+			}catch(ParseException e){
+				novaViagem.datadeida = new Date();
+				novaViagem.datadevolta = new Date();
+			}	
 			novaViagem.local =  form().bindFromRequest().get("local");
+			novaViagem.senha = null;
+			novaViagem.senha = form().bindFromRequest().get("senha");
 			novaViagem.descricao = form().bindFromRequest().get("descricao");
-			novaViagem.dono = getUser(session().get("email"));
-			novaViagem.datadeida = new Date();
-			novaViagem.datadevolta = new Date();
+			Usuario dono =  getUser(session().get("email"));
 			novaViagem.estadoDaViagem = form().bindFromRequest().get("estado");
+			novaViagem.dono = dono;
+			novaViagem.dono.viagensCriadas.add(novaViagem);
+			dao.merge(novaViagem);
 			dao.persist(novaViagem);
 			System.out.println("persistiu a VIAGEM: "+ novaViagem.descricao);
+			flash("fail","Viagem salva com sucesso");
 			return redirect(controllers.routes.Application.index());
 		}
 	}
