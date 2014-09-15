@@ -57,9 +57,11 @@ public class Viagens extends Controller {
 			Usuario dono =  getUser(session().get("email"));
 			novaViagem.setEstadoDaViagem(form().bindFromRequest().get("estado"));
 			novaViagem.setDono(dono);
-			System.out.println(novaViagem.getDono().getViagensCriadas());
 			dao.persist(novaViagem);
 			dao.flush();
+			//dono.getViagensCriadas().add(novaViagem);
+			//dao.merge(dono);
+			//dao.flush();
 			System.out.println("persistiu a VIAGEM: "+ novaViagem.getDescricao());
 			flash("fail","Viagem salva com sucesso");
 			return redirect(controllers.routes.Application.index());

@@ -1,5 +1,9 @@
 package controllers;
 
+
+import java.util.List;
+
+import models.Viagem;
 import models.dao.GenericDAO;
 import models.dao.GenericDAOImpl;
 import play.db.jpa.Transactional;
@@ -26,5 +30,6 @@ public class Application extends Controller {
     public static Result CriarViagem() {
     	return ok();
     }
-
+    
+    
 }
