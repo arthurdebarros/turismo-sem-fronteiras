@@ -30,6 +30,7 @@ public class Registro extends Controller {
             return badRequest(registro.render(registroForm));
         } else {
         	dao.persist(u);
+        	dao.flush();
             return redirect(
                 routes.Login.show()
             );

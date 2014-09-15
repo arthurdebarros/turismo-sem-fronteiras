@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,19 +22,22 @@ public class Usuario {
 	
 
 	@ManyToMany(mappedBy = "participacoes")
-	private List<Viagem> viagens = new LinkedList<Viagem>();
+	private List<Viagem> viagens;
 	
 	@OneToMany
-	private List<Viagem> viagensCriadas = new LinkedList<Viagem>();
-	
+	private List<Viagem> viagensCriadas;
 	private String email;
 	private String pass;
 	private String nome;
 	
 	public Usuario() {
+		this.viagens  = new ArrayList<Viagem>();
+		this.viagensCriadas = new ArrayList<Viagem>();
 	}
 	
 	public Usuario(String email, String pass, String nome) {
+		this.viagens  = new ArrayList<Viagem>();
+		this.viagensCriadas = new ArrayList<Viagem>();
 		this.email = email;
 		this.nome = nome;
 		this.pass = pass;

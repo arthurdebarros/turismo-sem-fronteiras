@@ -48,7 +48,8 @@ public class Viagens extends Controller {
 			}catch(ParseException e){
 				novaViagem.setDatadeida(new Date());
 				novaViagem.setDatadevolta(new Date());
-			}	
+			}
+			novaViagem.setTitulo(form().bindFromRequest().get("titulo"));
 			novaViagem.setLocal(form().bindFromRequest().get("local"));
 			novaViagem.setSenha(null);
 			novaViagem.setSenha(form().bindFromRequest().get("senha"));
@@ -56,9 +57,9 @@ public class Viagens extends Controller {
 			Usuario dono =  getUser(session().get("email"));
 			novaViagem.setEstadoDaViagem(form().bindFromRequest().get("estado"));
 			novaViagem.setDono(dono);
-			novaViagem.getDono().getViagensCriadas().add(novaViagem);
-			//dao.merge(novaViagem);
+			System.out.println(novaViagem.getDono().getViagensCriadas());
 			dao.persist(novaViagem);
+			dao.flush();
 			System.out.println("persistiu a VIAGEM: "+ novaViagem.getDescricao());
 			flash("fail","Viagem salva com sucesso");
 			return redirect(controllers.routes.Application.index());
